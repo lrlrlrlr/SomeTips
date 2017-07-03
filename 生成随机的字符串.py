@@ -3,7 +3,7 @@ import random
 def randomname(length=(8,12)):
 	def randomchar():#生成随机英文小写
 		return chr(random.randint(97,122))
-	def randomnum():
+	def randomnum():#生成随机数字
 		return random.randint(0,9)
 
 	name=''
@@ -18,7 +18,7 @@ def randomname(length=(8,12)):
 
 def randomname2(length=(8,12)):
 	s='qwertyuiopasdfghjklzxcvbnm1234567890'
-	result=''.join(random.choices(s,k=random.randint(*length)))
+	result=''.join(random.choices(s,k=random.randint(*length)))#random.choice或者random.choices更好用!
 	return result
 
 if __name__ == '__main__':
