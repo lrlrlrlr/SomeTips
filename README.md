@@ -1,0 +1,2 @@
+# SomeTips
+Some tricks~
