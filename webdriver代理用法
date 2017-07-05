@@ -1,0 +1,9 @@
+#这个是webdriver代理的用法
+from selenium import webdriver
+
+def webdriver_chrome(proxy):
+	chrome_options=webdriver.ChromeOptions()
+	chrome_options.add_argument('--proxy-server=%s'%proxy)
+
+	chrome=webdriver.Chrome(executable_path=r'D:\DDL DATA\OneDrive\tools\chromedriver.exe',chrome_options=chrome_options)
+	chrome.get('http://www.ip138.com')
