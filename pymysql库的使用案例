@@ -1,0 +1,21 @@
+
+def database():
+    #连接mysql数据库
+    connect=pymysql.Connect(
+		host='localhost',
+		port=3306,
+		user='root',
+		passwd='1123',
+		db='hello',
+		charset="utf8"
+	    )
+    #绑定cursor
+	cursor=connect.cursor()
+    cursor.execute("SELECT * FROM tablename;")#在这里输入sql语句
+    connect.commit()#提交修改
+    cursor.close()
+    connect.close()
+    
+    
+if __name__=='__main__':
+	database()
