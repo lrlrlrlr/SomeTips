@@ -1,0 +1,7 @@
+
+lst=[]
+
+if lst:
+    pass
+else:
+    print("it's a empty list!")
