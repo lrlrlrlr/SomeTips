@@ -1,0 +1,33 @@
+
+class Name():
+'''这是一个格式化输出名字的函数'''
+    def get_format_name(self, firstname, lastname):
+        self.firstname = firstname
+        self.lastname = lastname
+        return ((self.firstname+' '+self.lastname).title())
+
+
+
+import unittest
+
+class NameTestCase(unittest.TestCase):
+'''测试函数'''
+    def test_first_last_name(self):
+        result = Name().get_format_name('josh', 'adam')
+        self.assertEqual(result, 'Josh Adam')
+
+
+#执行观察结果
+unittest.main()
+
+
+
+'''
+备注一些其他用法：
+assertEqual(a, b) 核实a == b
+assertNotEqual(a, b) 核实a != b
+assertTrue(x) 核实x 为True
+assertFalse(x) 核实x 为False
+assertIn(item , list ) 核实 item 在 list 中
+assertNotIn(item , list ) 核实 item 不在 list 中
+'''
