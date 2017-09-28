@@ -1,0 +1,23 @@
+
+今天更新了模型,想无损更改数据库结构,但是
+Flask中用Flask-Migrate的migrate+update命令升级数据库时出错：alembic.script.revision.ResolutionError: No such revision or branch 'f47f408dda0b'
+
+查了一下发现原因是在数据库里有个alembic_version表,里面记录了当前的flask-migrate的模型版本,因为之前胡乱调试了数据库，没有好好使用migration，所以模型的版本号已经不对了，如果模型版本和目前的情况对不上就会报错。
+
+然后我把alembic_version这个表删除了，再运行update命令，发现报错：Target database is not up to date
+
+查了一圈发现还是得有这个表，于是重建这个表，并在表里填写上当前数据库模型对应的migrate备份编号
+
+这时候运行update命令，发现还是报错：Duplicate column name 'body_html',
+
+原来我并没有成功将当前的数据库模型对应上以前备份好的migrate备份，在仔细查看数据库情况和migrations的version文件之后，修改调试之后终于能成功upgrade
+
+
+总结要点如下:
+flask-migrate
+1.先设置对应的数据库环境变量 set DATABASE_URL=........
+2.然后运行python manage.py migrate -m '更新模型内容'
+3.检查migrations/versions/下生成的新文件,查看upgrade方法下更改的东西对不对
+3.2.注意当前数据库alembic_version是不是对应着当前的版本,如果不是的话得注意调整
+4.然后更新数据结构python manage.py update
+
