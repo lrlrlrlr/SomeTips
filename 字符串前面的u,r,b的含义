@@ -1,0 +1,20 @@
+经常在字符串前面看到u,b,r等字母,一直没有系统的理解他们的含义,现在来整理一下.
+
+u'example' 这个字符串前面加了u,代表着这个字符串是一个unicode; python3的str方法生成的也是unicode.
+
+b'example'代表着这个字符串是一个bytes,使用c库的时候传进去的参数一般使用这个格式.
+
+r'example'代表着字串里的内容不转义(个人理解r的意思是raw), 即不将字串里的\n翻译成换行,ect.. 常用于re模块.
+
+
+tips:
+------------------------------------------
+str与byte互相转换的方法:
+
+1)str转bytes: 
+STR=u'example'
+byte(STR,encoding='utf8')
+
+2)bytes转str:
+BYTES=b'example'
+str(BYTES,encoding='utf8')
