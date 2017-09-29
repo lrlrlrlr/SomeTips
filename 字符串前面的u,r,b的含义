@@ -15,9 +15,17 @@ tips:
 str与byte互相转换的方法:
 1)str转bytes: 
 STR=u'example'
-byte(STR,encoding='utf8')
+#方法一
+bytes(STR,encoding='utf8')
+#方法二
+str.encode(STR)
 
 2)bytes转str:
 BYTES=b'example'
+#方法一
 str(BYTES,encoding='utf8')
+#方法二
+bytes.decode(BYTES)
+#方法三
+BYTES.decode()
 ------------------------------------------
